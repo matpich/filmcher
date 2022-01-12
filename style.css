@@ -1,9 +1,84 @@
 * {
     margin:0;
-    background-color: #F4BF27;
+    padding: 0;
 }
 
-.search {
+body {
+    height: 100vh;
+    background-size: cover;
+    background: linear-gradient(45deg, rgba(255,178,0,1) 0%, rgba(255,234,0,1) 100%);
+    overflow: hidden;
+
+}
+
+.bckg-box {
+    position: absolute;
+    top: -50px;
+    z-index: -1;
+    height: 5%;
+    width: 10%;
+    background-color: #fff;
+    animation-name: bckg-animation;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+
+
+}
+
+#bckg-box-1 {    
+    animation-duration: 4s;
+}
+
+#bckg-box-2 {
+    left: 10%;
+    animation-duration: 5s;
+}
+
+#bckg-box-3 {
+    left: 20%;
+    animation-duration: 4.2s;
+}
+
+#bckg-box-4 {
+    left: 30%;
+    animation-duration: 3s;
+}
+
+#bckg-box-5 {
+    left: 40%;
+    animation-duration: 6s;
+}
+
+#bckg-box-6 {
+    left: 50%;
+    animation-duration: 4.5s;
+}
+#bckg-box-7 {
+    left: 60%;
+    animation-duration: 3.5s;
+}
+#bckg-box-8 {
+    left: 70%;
+    animation-duration: 2.5s;
+}
+#bckg-box-9 {
+    left: 80%;
+    animation-duration: 5.5s;
+}
+#bckg-box-10 {
+    left: 90%;
+    animation-duration: 3.1s;
+}
+
+@keyframes bckg-animation{
+    100% {
+        transform-origin: center;
+        transform: translate(0, 100vh) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+#search-form {
     display: flex;
     margin-top: 15vh;
     justify-content: center;
@@ -22,8 +97,7 @@
 }
 
 #search-field:focus {
-    outline: none;
-   
+    outline: none;   
 }
 
 #submit {
@@ -36,6 +110,11 @@
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     outline: none;
+}
+
+#submit:hover {
+    color: #F4BF27;
+    transition: color .5s;
 }
 
 #search-icon {
