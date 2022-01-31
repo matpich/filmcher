@@ -1,4 +1,5 @@
 import dummy from "./dummyFilm.json" assert { type: "json"};
+import { search } from "./search.js";
 
 //background elements size
 const squaresFormatter = (divs) => {
@@ -36,6 +37,7 @@ window.addEventListener('resize', () => squaresFormatter('.bckg-box'));
 
 document.getElementById('search-form').addEventListener('submit', ev => ev.preventDefault());
 
-console.log(dummy)
+console.log(dummy);
+search();
 
-let div = document.getElementById('res-container')
+

@@ -1,19 +1,25 @@
 * {
     margin:0;
     padding: 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
-body {
-    height: 100vh;
-    padding-top: 15vh;
-    background-size: cover;
-    background: linear-gradient(45deg, rgba(255,178,0,1) 0%, rgba(255,234,0,1) 100%);
-    overflow: hidden;
 
+body {
+    box-sizing: border-box;
+    padding-top: 25px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: linear-gradient(45deg, rgba(255,178,0,1) 0%, rgba(255,234,0,1) 100%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #bckg-container {
-    position: absolute;
+    position: fixed;
     z-index: -1;
     margin-top: -15vh;
     width: 100%;
@@ -21,10 +27,9 @@ body {
 }
 
 .bckg-box {
-    position: absolute;
+    position: fixed;
     box-sizing: border-box;
     border: 2px solid white;
-    /* animation: bckg-animation 4s ease-in linear; */
     animation-name: bckg-animation;
     animation-duration: 6s;
     animation-iteration-count: infinite;
@@ -42,17 +47,20 @@ body {
     }
 }
 
+/* form styling */
+
 #search-form {
     display: flex;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 #search-field {
     background-color: #ffffff;
     padding: 18px;
     height: 2em;
-    width: 60%;
-
+    width: 70vw;
+    max-width: 800px;
     font-size: 1.5em;
     border: none;
     border-top-left-radius: 15px;
@@ -76,10 +84,73 @@ body {
 }
 
 #submit:hover {
+    background-color: #ffffff;
     color: #F4BF27;
-    transition: color .5s;
+    transition: all .8s;
+    outline: 3px solid #F4BF27;
+    outline-offset: -3px;
 }
 
 #search-icon {
     background-color: inherit;
+}
+
+.single-res {
+    margin: 5px;
+    min-width: 350px;
+    max-width: 500px;
+    width: 40%;
+    display: flex;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.single-res:hover {
+    border-color: #ffffff;
+    background-color: rgba(255,255,255,0.35);
+    transition: background-color .3s;
+    cursor: pointer;
+}
+
+.res-image {
+    display: block;
+    width: 150px;
+    margin: 10px;
+}
+
+.res-desc {
+    height: 100%;
+    margin: 10px;
+    font-size: 14px;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.res-desc p {
+    color: #ffffff;
+    background-color: #000;
+    padding: 5px;
+    display: block;
+
+    align-self: flex-start;
+}
+
+.multi-res {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90vw;
+}
+
+.page-title {
+    font-family: 'Righteous', cursive;
+    font-size: 4em;
+    margin-bottom: 25px;
+}
+
+.page-title > span {
+    font-family: 'Righteous', cursive;
+    color: purple;
 }
