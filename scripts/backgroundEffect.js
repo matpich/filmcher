@@ -12,7 +12,7 @@ const getRandom = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-export const animatedSquares = ()=> {
+const animatedSquares = ()=> {
     let bckgBoxes = [
         [`${getRandom(5,9)}%`, `${getRandom(22,28)}%`, `${getRandom(7,13)}%`],
         [`${getRandom(36,42)}%`, `${getRandom(43,49)}%`, `${getRandom(5,9)}%`],
@@ -35,3 +35,7 @@ export const animatedSquares = ()=> {
     squaresFormatter(`.bckg-box`);
 
 }
+
+window.addEventListener('load', animatedSquares)
+
+window.addEventListener('resize', () => squaresFormatter('.bckg-box'));

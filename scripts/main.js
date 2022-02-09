@@ -1,15 +1,19 @@
 import dummy from "./dummyFilm.json" assert { type: "json"};
-import { search } from "./search.js";
-import { animatedSquares } from "./backgroundEffect.js";
+import "./backgroundEffect.js";
+import { Search } from "./SearchMockup.js";
 
-window.addEventListener('load', animatedSquares)
 
-window.addEventListener('resize', () => squaresFormatter('.bckg-box'));
+// document.getElementById('search-form').addEventListener('submit', ev => {
+//     ev.preventDefault();
+//     let searchValue = document.getElementById('search-field').value;
+//     search(searchValue);
+// });
 
 document.getElementById('search-form').addEventListener('submit', ev => {
     ev.preventDefault();
     let searchValue = document.getElementById('search-field').value;
-    search(searchValue);
+    let searchResult = new Search(searchValue);
+    searchResult.search();
 });
 
 
