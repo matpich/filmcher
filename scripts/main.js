@@ -1,6 +1,6 @@
 import dummy from "./dummyFilm.json" assert { type: "json"};
 import "./backgroundEffect.js";
-import { Search } from "./SearchMockup.js";
+import { Search } from "./Search.js";
 
 
 // document.getElementById('search-form').addEventListener('submit', ev => {

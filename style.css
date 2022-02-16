@@ -7,12 +7,10 @@
 
 body {
     box-sizing: border-box;
-    padding-top: 25px;
     /* background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed; */
     background-color:  rgb(255, 178, 0);
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -158,7 +156,7 @@ body {
     user-select: none;
     font-family: 'Righteous', cursive;
     font-size: 4em;
-    margin-bottom: 25px;
+    margin: 25px;
 }
 
 .page-title > span {
@@ -191,3 +189,85 @@ body {
 
 }
 
+.movie-desc-background {
+    background-color: rgba(0,0,0,.7);
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.movie-desc-frame {
+    position: fixed;
+    display: flex;
+    overflow: hidden;
+    max-width: 700px;
+    width: 80%;
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color:  rgba(0,0,0,.7);
+    gap:20px;
+    padding:20px;
+    font-size: .8em;
+}
+
+#movie-desc-close {
+    position: absolute;
+    user-select: none;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+#movie-desc-close:hover {
+    background-color: #F4BF27;
+}
+
+.movie-desc-frame img {
+    align-self: flex-start;
+}
+
+.movie-desc-frame div {
+    color: #fff;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-desc-frame div > ul {
+    list-style: none;
+}
+
+li {
+    margin: 6px 0;
+}
+
+
+li > span, #movie-desc-rating span {
+    background-color: white;
+    color: #000;
+    padding: 1.5px;
+    font-weight: bold;
+    display: block;
+}
+
+li > p {
+    font-weight: lighter;
+}
+
+#movie-desc-rating {
+    margin-top: 35px;
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    font-size: 1.5em;
+}
