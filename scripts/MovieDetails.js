@@ -1,17 +1,24 @@
-import dummy from "./dummyFilm.json" assert { type: "json"};
+import constants from "./constants.json" assert { type: "json"};
 
 export class MovieDetails {
-    constructor() {
-        console.log('Hello World!');
-        console.log(dummy);
-        this.display();
+    constructor(imdbID) {
+        this.OMDB_API = constants.OMDB_API;
+        this.API_KEY = constants.API_KEY;
+        this.imdbID = imdbID;
+        
+        this.getMovieDetails();
     }
 
-    say () {
-        console.log('Dupa');
+    getMovieDetails () {
+        fetch(`${this.OMDB_API}?apikey=${this.API_KEY}&i=${this.imdbID}`)
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+                this.display(res);
+            })
     }
 
-    display () {
+    display (res) {
         console.log('movieDisplay!');
         let movieDescBackground = document.createElement('div');
         movieDescBackground.className = "movie-desc-background";
@@ -21,28 +28,28 @@ export class MovieDetails {
         movieDescFrame.className = "movie-desc-frame";
 
         movieDescFrame.innerHTML = `
-            <img src='${dummy.Poster}'>
+            <img src='${this.notAvailableHandler(res.Poster, "poster")}'>
             <div>
                 <div>
-                    <h2>${dummy.Title}</h2>
-                    <p>${dummy.Plot}</p>
+                    <h2>${res.Title}</h2>
+                    <p>${this.notAvailableHandler(res.Plot, "description")}</p>
                 </div>
 
                 <ul>
-                    <li><span>Released</span> ${dummy.Released}</li>
-                    <li><span>Genre</span> ${dummy.Genre}</li>
-                    <li><span>Director</span> ${dummy.Director}</li>
-                    <li><span>Writer</span> ${dummy.Writer}</li>
-                    <li><span>Actors</span> ${dummy.Actors}</li>
-                    <li><span>Country</span> ${dummy.Country}</li>
+                    <li><span>Released</span> ${res.Released}</li>
+                    <li><span>Genre</span> ${res.Genre}</li>
+                    <li><span>Director</span> ${res.Director}</li>
+                    <li><span>Writer</span> ${res.Writer}</li>
+                    <li><span>Actors</span> ${res.Actors}</li>
+                    <li><span>Country</span> ${res.Country}</li>
                 </ul>
 
                 <div id="movie-desc-rating">
                     <div>
-                        <span>Rating</span><p>${dummy.imdbRating}/10</p>
+                        <span>Rating</span><p>${res.imdbRating}</p>
                     </div>
                     <div>
-                        <span>Votes</span><p>${dummy.imdbVotes}</p>
+                        <span>Votes</span><p>${res.imdbVotes}</p>
                     </div>
                 </div>
             </div>
@@ -57,5 +64,18 @@ export class MovieDetails {
         let movieDescBackground = document.querySelector('.movie-desc-background');
         console.log(movieDescBackground);
         document.body.removeChild(movieDescBackground);
+    }
+
+    notAvailableHandler (res, type) {
+        if (res === 'N/A') {
+            switch (type){
+                case "description":
+                    return "Description not available. We're sorry.";
+                case "poster":
+                    return "./image/N_A.jpg";
+                default:
+                    break;
+            }
+        } else return res;
     }
 }

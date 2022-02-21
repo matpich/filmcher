@@ -121,8 +121,9 @@ body {
 }
 
 .res-image {
+    object-fit: cover;
     display: block;
-    width: 150px;
+    max-width: 150px;
     margin: 10px;
 }
 
@@ -217,6 +218,9 @@ body {
 }
 
 #movie-desc-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     user-select: none;
     top: 10px;

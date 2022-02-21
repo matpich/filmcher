@@ -1,10 +1,11 @@
 import { Pagination } from "./Pagination.js";
 import { MovieDetails } from "./MovieDetails.js";
+import constants from "./constants.json" assert { type: "json"};
 
 export class Search {
     constructor(searchQuery) {
-        this.OMDB_API = "http://www.omdbapi.com/";
-        this.API_KEY = "58b32334";
+        this.OMDB_API = constants.OMDB_API;
+        this.API_KEY = constants.API_KEY;
         this.searchQuery = searchQuery;
         this.pagination = new Pagination();
     }
@@ -43,7 +44,7 @@ export class Search {
             resDesc.append(descHeader, descYear, descType);
 
             singleRes.addEventListener("click", () => {
-                let details = new MovieDetails();
+                let details = new MovieDetails(res.imdbID);
             })
 
             //appends img and text response to single response container
@@ -51,8 +52,6 @@ export class Search {
 
             //appends single response container into multiple container
             parentContainer.appendChild(singleRes);
-
-            console.log(res.imdbID);
         }
     }
 
