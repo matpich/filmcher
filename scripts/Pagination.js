@@ -85,5 +85,28 @@ export class Pagination {
 
 			}
 		})
+
+		//copies the pagination in order to place it second time under the seatch results
+		let pagContBelow = pagCont.cloneNode(true);
+		pagContBelow.addEventListener('click', el => {
+			let pageNumber = el.target.dataset.pageNumber;
+			if (pageNumber == undefined) {
+				return;
+			} else if (pageNumber == 'left' && this.currentPage > 1) {
+				this.currentPage--;
+				parentSearchObject.search();
+
+			} else if (pageNumber == 'right' && this.currentPage < this.totalPages) {
+				this.currentPage++;
+				parentSearchObject.search();
+
+			} else {
+				this.currentPage = Number(pageNumber);
+				parentSearchObject.search();
+
+			}
+		});
+		document.body.appendChild(pagContBelow);
 	}
+	
 }

@@ -28,7 +28,9 @@ export class MovieDetails {
         movieDescFrame.className = "movie-desc-frame";
 
         movieDescFrame.innerHTML = `
-            <img src='${this.notAvailableHandler(res.Poster, "poster")}'>
+            <div>
+                <img src='${this.notAvailableHandler(res.Poster, "poster")}'>
+            </div>
             <div>
                 <div>
                     <h2>${res.Title}</h2>
@@ -52,8 +54,11 @@ export class MovieDetails {
                         <span>Votes</span><p>${res.imdbVotes}</p>
                     </div>
                 </div>
-            </div>
-            <div id="movie-desc-close">X</div>`
+            </div>`
+        let closeButton = document.createElement('div');
+        closeButton.setAttribute('id', 'movie-desc-close');
+        closeButton.innerHTML = 'CLOSE';
+        movieDescBackground.appendChild(closeButton);
         movieDescBackground.appendChild(movieDescFrame);
 
         document.querySelector('#movie-desc-close').addEventListener('click', this.remove);
@@ -64,6 +69,7 @@ export class MovieDetails {
         let movieDescBackground = document.querySelector('.movie-desc-background');
         console.log(movieDescBackground);
         document.body.removeChild(movieDescBackground);
+        document.body.style.overflow = "scroll";
     }
 
     notAvailableHandler (res, type) {

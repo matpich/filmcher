@@ -45,6 +45,7 @@ export class Search {
 
             singleRes.addEventListener("click", () => {
                 let details = new MovieDetails(res.imdbID);
+                document.body.style.overflow = 'hidden';
             })
 
             //appends img and text response to single response container
@@ -74,10 +75,23 @@ export class Search {
     };
 
     search () {
+        let multiRes = this.multiMovies();
+
+        //hanfdles scenario when search field is empty
+        if (!this.searchQuery) {
+            //creates h2 for error message
+            let errorMessage = document.createElement('h2');
+            errorMessage.className = "error-msg-res";
+            errorMessage.innerText = "Search field is empty!";
+            //appends container with error message
+            multiRes.appendChild(errorMessage);
+
+            return;
+        }
+
         fetch(`${this.OMDB_API}?apikey=${this.API_KEY}&s=${this.searchQuery}&page=${this.pagination.currentPage}`)
             .then(response => response.json())
             .then(response => {
-                let multiRes = this.multiMovies();
                 //checks if there are any responses if not then it handles it
                 if (response.Response === "False") {
                     //creates h2 for error message
@@ -94,6 +108,7 @@ export class Search {
                 this.pagination.displayer(this);
 
                 this.singleMovie(response, multiRes);
+                window.scrollTo(0,0);
             })
     }
 

@@ -7,9 +7,6 @@
 
 body {
     box-sizing: border-box;
-    /* background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed; */
     background-color:  rgb(255, 178, 0);
     display: flex;
     flex-direction: column;
@@ -51,14 +48,15 @@ body {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    width: 90vw;
+    max-width: 1000px;
 }
 
 #search-field {
     background-color: #ffffff;
     padding: 18px;
     height: 2em;
-    width: 70vw;
-    max-width: 800px;
+    width: 100%;
     font-size: 1.5em;
     border: none;
     border-top-left-radius: 15px;
@@ -85,7 +83,7 @@ body {
     background-color: #ffffff;
     color: #F4BF27;
     transition: all .8s;
-    outline: 3px solid #F4BF27;
+    outline: 3px solid #000;
     outline-offset: -3px;
 }
 
@@ -94,16 +92,17 @@ body {
 }
 
 .single-res, .error-msg-res {
-    margin: 5px;
+    margin: 5px 0;
     display: flex;
     border: 2px solid black;
     border-radius: 10px;
 }
 
 .single-res {
-    min-width: 350px;
-    max-width: 500px;
-    width: 40%;
+    box-sizing: border-box;
+    min-width: 49%;
+    flex-basis: 0;
+    word-break: break-word;
 }
 
 .error-msg-res {
@@ -151,6 +150,9 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     width: 90vw;
+    max-width: 1000px;
+    margin-bottom: 30px;
+    gap: 2%;
 }
 
 .page-title {
@@ -168,6 +170,7 @@ body {
 .pagination-container {
     display: flex;
     justify-content: center;
+    gap: 2px;
     width: 90vw;
     margin-bottom: 10px;
 }
@@ -176,11 +179,10 @@ body {
     box-sizing: border-box;
     border-left: 2px solid rgba(128, 0, 128, 0);
     border-right: 2px solid rgba(128, 0, 128, 0);
-    padding: 2px;
+
     font-size: 1.7em;
     user-select: none;
     font-weight: bold;
-    margin: 0 5px;
 }
 
 .single-page:hover, .current {
@@ -198,13 +200,13 @@ body {
     position: fixed;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
 }
 
 .movie-desc-frame {
-    position: fixed;
     display: flex;
     overflow: hidden;
     max-width: 700px;
@@ -221,15 +223,18 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
+
+    padding: 10px;
+    margin: 10px;
+
+    color: #fff;
+
     user-select: none;
-    top: 10px;
-    right: 10px;
-    width: 20px;
+
     height: 20px;
     background-color: #000;
     border: 2px solid white;
-    border-radius: 50%;
+    border-radius: 10px;
 }
 
 #movie-desc-close:hover {
@@ -274,4 +279,53 @@ li > p {
     gap: 20px;
     flex-direction: row;
     font-size: 1.5em;
+}
+
+@media screen and (max-width: 750px) {
+    .single-res {
+        min-width: 100%;
+    }
+
+    .movie-desc-background {
+        overflow: scroll;
+    }
+
+    .movie-desc-frame {
+        flex-direction: column;
+        border-radius: 0;
+        overflow: scroll;
+        max-width: none;
+        width: 100%;
+        border: none;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .movie-desc-frame img {
+        align-self: center;
+    }
+
+    #movie-desc-close {
+        margin: 0;
+        box-sizing: border-box;
+        padding: 20px;
+        border-radius: 0;
+        border: none;
+        border-bottom: 2px solid white;
+        width: 100vw;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .single-page {
+        font-size: 1.2em;
+    }
+
+    .res-desc h2 {
+        font-size: 1.2em;
+    }
+
+    .res-desc h3, .res-desc p {
+        font-size: 1em;
+    }
 }
