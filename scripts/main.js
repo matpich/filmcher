@@ -1,4 +1,3 @@
-import dummy from "./dummyFilm.json" assert { type: "json"};
 import "./backgroundEffect.js";
 import { Search } from "./Search.js";
 
@@ -16,4 +15,5 @@ document.getElementById('search-form').addEventListener('submit', ev => {
     searchResult.search();
 });
 
+document.querySelector('.page-title').addEventListener('click', () => window.location.reload());
 
