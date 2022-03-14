@@ -1,11 +1,10 @@
 import { Pagination } from "./Pagination.js";
 import { MovieDetails } from "./MovieDetails.js";
-import constants from "./constants.json" assert { type: "json"};
 
 export class Search {
     constructor(searchQuery) {
-        this.OMDB_API = constants.OMDB_API;
-        this.API_KEY = constants.API_KEY;
+        this.OMDB_API = "http://www.omdbapi.com/";
+        this.API_KEY = "58b32334";
         this.searchQuery = searchQuery;
         this.pagination = new Pagination();
     }
